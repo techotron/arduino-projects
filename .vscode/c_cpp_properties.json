@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/eddy/Arduino/libraries/Adafruit_AM2320_sensor_library",
+                "/home/eddy/Arduino/libraries/Adafruit_Unified_Sensor",
+                "/home/eddy/Arduino/libraries/DHT_sensor_library"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
