@@ -1,3 +1,6 @@
+#define BLYNK_DEBUG // Optional, this enables lots of prints
+#define BLYNK_PRINT Serial
+
 // DHT Temperature & Humidity Sensor
 // Unified Sensor Library Example
 // Written by Tony DiCola for Adafruit Industries
@@ -126,6 +129,7 @@ DHT_Unified dht(DHTPIN, DHTTYPE);
 uint32_t delayMS;
 
 void setup() {
+  Blynk.begin(auth, ssid, pass);
   Serial.begin(9600);
   // Initialize device.
   dht.begin();
@@ -162,6 +166,10 @@ void setup() {
   digitalWrite(Heater1RelayPin, LOW);
 }
 
+void blynkWrite() {
+  Blynk.virtualWrite(V5, EnvironmentTemp);
+}
+
 void loop() {
   // Delay between measurements.
   delay(delayMS);
@@ -187,7 +195,8 @@ void loop() {
     Serial.println(F("%"));
     EnvironmentHumidity = event.relative_humidity;
   }
-
+  Blynk.run();
+  blynkWrite();
   controlHeatersAndFans();
 
 //  if (EnvironmentTemp <= iHeaterOnTemp) {
